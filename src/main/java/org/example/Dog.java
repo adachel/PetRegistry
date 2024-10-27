@@ -1,15 +1,26 @@
 package org.example;
 
-import javax.xml.crypto.Data;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Dog {
-    String name;
-    Data birthday;
-    CommandsPets[] commands;
+    private String name;
+    private String birthday;
+    private ArrayList<CommandsPets> commands;
 
-    public Dog(String name, Data birthday, CommandsPets[] commands) {
+    public Dog(String name, String birthday, ArrayList<CommandsPets> commands) {
         this.name = name;
         this.birthday = birthday;
         this.commands = commands;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Dog{" +
+                "name='" + name + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", commands=" + commands +
+                '}';
     }
 }
