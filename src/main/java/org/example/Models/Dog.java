@@ -1,23 +1,25 @@
-package org.example;
+package org.example.Models;
+
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Dog {
     private String name;
     private String birthday;
-    private ArrayList<CommandsPets> commands;
+    private ArrayList<String> commands;
+    private int count;
 
-    public Dog(String name, String birthday, ArrayList<CommandsPets> commands) {
+    public Dog(String name, String birthday, ArrayList<String> commands) {
         this.name = name;
         this.birthday = birthday;
         this.commands = commands;
+        count++;
     }
 
 
     @Override
     public String toString() {
-        return "Dog{" +
+        return "{" +
                 "name='" + name + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", commands=" + commands +
