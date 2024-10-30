@@ -6,4 +6,14 @@ public class PackAnimals extends Animal{
     public PackAnimals(String birthday, ArrayList<String> commands, String name) {
         super(birthday, commands, name);
     }
+
+    @Override
+    void addAnima(Animal animal) {
+
+    }
+
+    @Override
+    void printAnimal() {
+
+    }
 }

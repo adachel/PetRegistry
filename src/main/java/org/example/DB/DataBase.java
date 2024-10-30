@@ -2,33 +2,31 @@ package org.example.DB;
 
 import org.example.IFunction;
 import org.example.Models.Animal;
+import org.example.Models.PackAnimals;
 import org.example.Models.Pets;
 
 import java.util.ArrayList;
 
-public class DataBase implements IFunction {
+public class DataBase {
     private ArrayList<Pets> petsDB;
+    private ArrayList<PackAnimals> packAnimalsDB;
+
 
     public DataBase() {
     }
 
-    @Override
-    public void addAnimal(Animal animal, String name, String birthday, ArrayList<String> commands) {
-
+    public ArrayList<Pets> getPetsDB() {
+        return petsDB;
     }
 
-    @Override
-    public void listCommands() {
-
+    public ArrayList<PackAnimals> getPackAnimalsDB() {
+        return packAnimalsDB;
     }
 
-    @Override
-    public void addCommand() {
 
-    }
-
-    @Override
-    public void listAnimalByDateOfBirth() {
-
+    public String toStringPets() {
+        return "DataBase{" +
+                "petsDB=" + petsDB +
+                '}';
     }
 }
