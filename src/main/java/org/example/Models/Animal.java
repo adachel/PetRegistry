@@ -1,45 +1,49 @@
 package org.example.Models;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public abstract class Animal {
     private String name;
     private String birthday;
-    private ArrayList<String> commands;
+    private ArrayList<String> commands = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getBirthday() { return birthday; }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
+    public void setBirthday(String birthday) { this.birthday = birthday; }
 
-    public void setCommands(ArrayList<String> commands) {
-        this.commands = commands;
-    }
+    public ArrayList<String> getCommands() { return commands; }
 
-    public String getName() {
-        return name;
-    }
+    public void setCommands(ArrayList<String> commands) { this.commands = commands; }
 
-    public String getBirthday() {
-        return birthday;
-    }
+    public String getName() { return name; }
 
-    public ArrayList<String> getCommands() {
-        return commands;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public Animal() {
-    }
+    public Animal() {}
 
-    public Animal(String birthday, ArrayList<String> commands, String name) {
+    public Animal(String name, String birthday, ArrayList<String> commands) {
         this.birthday = birthday;
         this.commands = commands;
         this.name = name;
     }
-    abstract void addAnima(Animal animal);
 
-    abstract void printAnimal();
+    public ArrayList<String> addCommands(){
+        System.out.println("Введите команды, выполняемые животным, 0 - Закончить ввод команд");
+        while (true){
+            String command = scanner.next();
+            if (command.equals("0")){
+                return commands;
+            }
+            commands.add(command);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", commands=" + commands;
+    }
 }

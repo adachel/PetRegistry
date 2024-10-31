@@ -7,26 +7,36 @@ import org.example.Models.Pets;
 
 import java.util.ArrayList;
 
-public class DataBase {
-    private ArrayList<Pets> petsDB;
+public class DataBase implements IFunction {
+    private ArrayList<Pets> petsDB = new ArrayList<>();
     private ArrayList<PackAnimals> packAnimalsDB;
-
 
     public DataBase() {
     }
 
-    public ArrayList<Pets> getPetsDB() {
-        return petsDB;
+    @Override
+    public void addAnimal(Pets pets) {
+        petsDB.add(pets);
     }
 
-    public ArrayList<PackAnimals> getPackAnimalsDB() {
-        return packAnimalsDB;
+    @Override
+    public void listCommands() {
+
+    }
+
+    @Override
+    public void addCommand() {
+
+    }
+
+    @Override
+    public void listAnimalByDateOfBirth() {
+
     }
 
 
-    public String toStringPets() {
-        return "DataBase{" +
-                "petsDB=" + petsDB +
-                '}';
+    @Override
+    public String toString() {
+        return "petsDB=" + petsDB;
     }
 }
