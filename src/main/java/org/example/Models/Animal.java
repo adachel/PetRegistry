@@ -23,18 +23,27 @@ public abstract class Animal {
 
     public Animal() {}
 
+    public Animal(String name, String birthday) {
+        this.name = name;
+        this.birthday = birthday;
+    }
+
     public Animal(String name, String birthday, ArrayList<String> commands) {
         this.birthday = birthday;
         this.commands = commands;
         this.name = name;
     }
 
-    public ArrayList<String> addCommands(){
+
+
+
+
+    public void addCommands(){
         System.out.println("Введите команды, выполняемые животным, 0 - Закончить ввод команд");
         while (true){
             String command = scanner.next();
             if (command.equals("0")){
-                return commands;
+                return;
             }
             commands.add(command);
         }
@@ -42,8 +51,6 @@ public abstract class Animal {
 
     @Override
     public String toString() {
-        return "name='" + name + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", commands=" + commands;
+        return "name= " + name + ", " + "birthday= " + birthday + ", " + "commands= " + commands;
     }
 }

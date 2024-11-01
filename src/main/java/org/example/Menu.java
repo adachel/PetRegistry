@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Menu {
     Scanner scanner = new Scanner(System.in);
     DataBase dataBase = new DataBase();
+    Pets pets = new Pets();
 
     public Menu() {
     }
@@ -73,10 +74,13 @@ public class Menu {
                     String name = scanner.next();
                     System.out.println("Дата рождения собаки");
                     String birthday = scanner.next();
-                    Dog dog = new Dog();
-                    ArrayList<String> commands = dog.addCommands();
-                    dog = new Dog(name, birthday, commands);
+                    Dog dog = new Dog(name, birthday);
+                    dog.addCommands();
                     dataBase.addAnimal(dog);
+
+
+//                    Dog dog = new Dog();
+//                    dataBase.addAnimal((Pets) dataAnimal(dog));
                     continue;
                 case "2":
                     System.out.println("Выбрал кошку");
@@ -100,5 +104,14 @@ public class Menu {
                     System.out.println("Сделайте корректный выбор");
             }
         }
+    }
+
+    public Animal dataAnimal(Animal animal){
+        System.out.println("Имя животного");
+        animal.setName(scanner.next());
+        System.out.println("Дата рождения животного");
+        animal.setBirthday(scanner.next());
+        animal.addCommands();
+        return animal;
     }
 }

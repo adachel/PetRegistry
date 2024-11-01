@@ -8,7 +8,7 @@ import org.example.Models.Pets;
 import java.util.ArrayList;
 
 public class DataBase implements IFunction {
-    private ArrayList<Pets> petsDB = new ArrayList<>();
+    private final ArrayList<Pets> petsDB = new ArrayList<>();
     private ArrayList<PackAnimals> packAnimalsDB;
 
     public DataBase() {
