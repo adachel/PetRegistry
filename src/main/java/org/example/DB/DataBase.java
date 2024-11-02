@@ -99,9 +99,6 @@ public class DataBase implements IFunction {
     }
 
 
-
-
-
     private LinkedHashMap<String, String> strToMap(Animal animal){
         String str = String.format(String.valueOf(animal));
         String[] arr = str.split(";");
