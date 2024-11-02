@@ -2,7 +2,13 @@ package org.example.DB;
 
 import org.example.IFunction;
 import org.example.Models.Animal;
-import java.util.*;
+import org.example.Models.PackAnimals;
+import org.example.Models.Pets;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class DataBase implements IFunction {
     private final ArrayList<HashMap<String, String>> petsDB = new ArrayList<>();
@@ -86,20 +92,12 @@ public class DataBase implements IFunction {
     @Override
     public void listAnimalByDateOfBirth() {
         ArrayList<HashMap<String, String>> resultBD = new ArrayList<>(petsDB);
-        resultBD.addAll(packAnimalsDB);
-        for (int i = 0; i < resultBD.size() - 1; i++) {
-            for (int j = 0; j < resultBD.size() - 1; j++) {
-                int dif = resultBD.get(j + 1).get("birthday").compareTo(resultBD.get(j).get("birthday"));
-                if (dif > 0){
-                    Collections.swap(resultBD, j, j + 1);
-                }
-            }
-        }
-
+        resultBD = new ArrayList<>(packAnimalsDB);
         for (HashMap<String, String> elem: resultBD){
             System.out.println(elem);
         }
     }
+
 
 
 
