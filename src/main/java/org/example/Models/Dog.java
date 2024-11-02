@@ -1,9 +1,5 @@
 package org.example.Models;
 
-import org.example.IFunction;
-
-import java.util.ArrayList;
-
 public class Dog extends Pets {
 
     private int id;
@@ -15,7 +11,7 @@ public class Dog extends Pets {
         id = super.getCount();
     }
 
-    public Dog(String name, String birthday, ArrayList<String> commands) {
+    public Dog(String name, String birthday, String commands) {
         super(name, birthday, commands);
         id = super.getCount();
     }
@@ -23,7 +19,7 @@ public class Dog extends Pets {
 
     @Override
     public String toString() {
-        return "[" + "Id= " + id + ", " + "Type= " + "Dog " + ", " + " " + super.toString() + ']';
-
+        String type = "Dog";
+        return id + ";" + type + ";" + super.toString();
     }
 }

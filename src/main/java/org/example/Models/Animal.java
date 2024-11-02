@@ -6,20 +6,20 @@ import java.util.Scanner;
 public abstract class Animal {
     private String name;
     private String birthday;
-    private ArrayList<String> commands = new ArrayList<>();
+    private String commands;
     private Scanner scanner = new Scanner(System.in);
 
-    public String getBirthday() { return birthday; }
+    public String getName() {
+        return name;
+    }
 
-    public void setBirthday(String birthday) { this.birthday = birthday; }
+    public String getBirthday() {
+        return birthday;
+    }
 
-    public ArrayList<String> getCommands() { return commands; }
-
-    public void setCommands(ArrayList<String> commands) { this.commands = commands; }
-
-    public String getName() { return name; }
-
-    public void setName(String name) { this.name = name; }
+    public String getCommands() {
+        return commands;
+    }
 
     public Animal() {}
 
@@ -28,29 +28,24 @@ public abstract class Animal {
         this.birthday = birthday;
     }
 
-    public Animal(String name, String birthday, ArrayList<String> commands) {
+    public Animal(String name, String birthday, String commands) {
+        this.name = name;
         this.birthday = birthday;
         this.commands = commands;
-        this.name = name;
     }
 
-
-
-
-
-    public void addCommands(){
+    public String addCommands(){
         System.out.println("Введите команды, выполняемые животным, 0 - Закончить ввод команд");
-        while (true){
-            String command = scanner.next();
-            if (command.equals("0")){
-                return;
-            }
-            commands.add(command);
+        String command = scanner.nextLine();
+        if (command.isEmpty()){
+            commands = " ";
         }
+        else commands = command;
+        return commands;
     }
 
     @Override
     public String toString() {
-        return "name= " + name + ", " + "birthday= " + birthday + ", " + "commands= " + commands;
+        return name + ";" + birthday + ";" + commands;
     }
 }

@@ -7,6 +7,7 @@ import org.example.Models.Dog;
 import org.example.Models.Pets;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Menu {
@@ -21,11 +22,11 @@ public class Menu {
         while (true){
             System.out.println("Выберите действие");
             System.out.println( "1 - Добавить животное, " +
-                                "2 - Список команд животного, " +
-                                "3 - Обучение животного, " +
-                                "4 - Список животных по дате рождения, " +
-                                "5 - Список всех домашних животных, " +
-                                "6 - Количество домашних животных, " +
+                                "2 - Список команд животного и обучение животного новым командам " +
+                                "3 - пусто " +
+                                "4 - Список всех животных по дате рождения, " +
+                                "5 - Список домашних животных, " +
+                                "6 - Список вьючных животных, " +
                                 "0 - Выход из программы");
             String ch = scanner.next();
             switch (ch){
@@ -33,20 +34,56 @@ public class Menu {
                     selectAnimal();
                     continue;
                 case "2":
-                    System.out.println("Список команд животного");
+                    System.out.println("Выберите тип животного: 1 - Домашнее животное, 2 - Вьючное животное");
+                    String select = scanner.next();
+                    System.out.println("Введите Id животного");
+                    String id = scanner.next();
+                    System.out.println("Выберите действие: 1 - Просмотр команд животного, 2 - Добавить новую команду");
+                    String command = scanner.next();
+                    switch (select){
+                        case "1":
+                            switch (command){
+                                case "1":
+                                    dataBase.listCommands(id, "pets");
+                                    continue;
+                                case "2":
+                                    System.out.println("Выберите новые команды");
+                                    String newCommands = scanner.next();
+                                    dataBase.addCommand(id, newCommands, "pets");
+                                    continue;
+                                default:
+                                    System.out.println("Сделайте корректный выбор");
+                            }
+                            break;
+                        case "2":
+                            switch (command){
+                                case "1":
+                                    dataBase.listCommands(id, "packAnimals");
+                                    continue;
+                                case "2":
+                                    System.out.println("Добавить новую команду");
+                                    String newCommands = scanner.next();
+                                    dataBase.addCommand(id, newCommands, "packAnimals");
+                                    continue;
+                                default:
+                                    System.out.println("Сделайте корректный выбор");
+                            }
+                            break;
+                        default:
+                            System.out.println("Сделайте корректный выбор");
+                    }
                     continue;
                 case "3":
-                    System.out.println("Обучение животного");
+                    System.out.println("пусто");
                     continue;
                 case "4":
-                    System.out.println("Список животных по дате рождения");
+                    dataBase.listAnimalByDateOfBirth();
                     continue;
                 case "5":
-                    System.out.println(dataBase.toString());
+                    dataBase.printDB("pets");
                     continue;
                 case "6":
-                    Pets pets = new Pets();
-                    System.out.println(pets.getCount());
+                    dataBase.printDB("packAnimals");
                     continue;
                 case "0":
                     System.out.println("Выход из программы");
@@ -70,17 +107,9 @@ public class Menu {
             String ch = scanner.next();
             switch (ch){
                 case "1":
-                    System.out.println("Имя собаки");
-                    String name = scanner.next();
-                    System.out.println("Дата рождения собаки");
-                    String birthday = scanner.next();
-                    Dog dog = new Dog(name, birthday);
-                    dog.addCommands();
-                    dataBase.addAnimal(dog);
-
-
-//                    Dog dog = new Dog();
-//                    dataBase.addAnimal((Pets) dataAnimal(dog));
+                    ArrayList<String> list = dataAnimal();
+                    Dog dog = new Dog(list.get(0), list.get(1), list.get(2));
+                    dataBase.addAnimal(dog, "pets");
                     continue;
                 case "2":
                     System.out.println("Выбрал кошку");
@@ -98,7 +127,7 @@ public class Menu {
                     System.out.println("Выбрал осла");
                     continue;
                 case "0":
-                    System.out.println("Выход из программы");
+                    System.out.println("Вернуться в предыдущее меню");
                     return;
                 default:
                     System.out.println("Сделайте корректный выбор");
@@ -106,12 +135,16 @@ public class Menu {
         }
     }
 
-    public Animal dataAnimal(Animal animal){
+    private ArrayList<String> dataAnimal(){
+        ArrayList<String> list = new ArrayList<>();
         System.out.println("Имя животного");
-        animal.setName(scanner.next());
+        String name = scanner.next();
+        list.add(name);
         System.out.println("Дата рождения животного");
-        animal.setBirthday(scanner.next());
-        animal.addCommands();
-        return animal;
+        String birthday = scanner.next();
+        list.add(birthday);
+        String commands = pets.addCommands();
+        list.add(commands);
+        return list;
     }
 }

@@ -16,10 +16,8 @@ public class Pets extends Animal{
         count++;
     }
 
-    public Pets(String name, String birthday, ArrayList<String> commands) {
+    public Pets(String name, String birthday, String commands) {
         super(name, birthday, commands);
         count++;
     }
-
-
 }
