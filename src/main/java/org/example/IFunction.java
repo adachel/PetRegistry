@@ -9,5 +9,4 @@ public interface IFunction {
     void listCommands(String Id, String flag);
     void addCommand(String id, String newCommand, String flag);
     void listAnimalByDateOfBirth();
-
 }

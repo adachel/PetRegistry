@@ -1,17 +1,17 @@
 package org.example.Models;
 
-public class Hamster extends Pets {
+public class Donkey extends PackAnimals{
 
     private int id;
 
-    public Hamster() {}
+    public Donkey() {}
 
-    public Hamster(String name, String birthday) {
+    public Donkey(String name, String birthday) {
         super(name, birthday);
         id = super.getCount();
     }
 
-    public Hamster(String name, String birthday, String commands) {
+    public Donkey(String name, String birthday, String commands) {
         super(name, birthday, commands);
         id = super.getCount();
     }
@@ -19,7 +19,7 @@ public class Hamster extends Pets {
 
     @Override
     public String toString() {
-        String type = "Hamster";
+        String type = "Donkey";
         return id + ";" + type + ";" + super.toString();
     }
 }

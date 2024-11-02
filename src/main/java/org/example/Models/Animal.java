@@ -1,6 +1,5 @@
 package org.example.Models;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Animal {
@@ -8,18 +7,6 @@ public abstract class Animal {
     private String birthday;
     private String commands;
     private Scanner scanner = new Scanner(System.in);
-
-    public String getName() {
-        return name;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public String getCommands() {
-        return commands;
-    }
 
     public Animal() {}
 

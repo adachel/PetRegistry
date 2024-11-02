@@ -2,18 +2,17 @@ package org.example;
 
 
 import org.example.DB.DataBase;
-import org.example.Models.Animal;
-import org.example.Models.Dog;
-import org.example.Models.Pets;
+import org.example.Models.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Menu {
     Scanner scanner = new Scanner(System.in);
     DataBase dataBase = new DataBase();
     Pets pets = new Pets();
+    PackAnimals packAnimals = new PackAnimals();
+    ArrayList<String> list = new ArrayList<>();
 
     public Menu() {
     }
@@ -23,7 +22,7 @@ public class Menu {
             System.out.println("Выберите действие");
             System.out.println( "1 - Добавить животное, " +
                                 "2 - Список команд животного и обучение животного новым командам " +
-                                "3 - пусто " +
+                                "3 - Всего животных " +
                                 "4 - Список всех животных по дате рождения, " +
                                 "5 - Список домашних животных, " +
                                 "6 - Список вьючных животных, " +
@@ -74,7 +73,7 @@ public class Menu {
                     }
                     continue;
                 case "3":
-                    System.out.println("пусто");
+                    System.out.println(pets.getCount() + packAnimals.getCount());
                     continue;
                 case "4":
                     dataBase.listAnimalByDateOfBirth();
@@ -107,24 +106,34 @@ public class Menu {
             String ch = scanner.next();
             switch (ch){
                 case "1":
-                    ArrayList<String> list = dataAnimal();
+                    list = dataAnimal("pets");
                     Dog dog = new Dog(list.get(0), list.get(1), list.get(2));
                     dataBase.addAnimal(dog, "pets");
                     continue;
                 case "2":
-                    System.out.println("Выбрал кошку");
+                    list = dataAnimal("pets");
+                    Cat cat = new Cat(list.get(0), list.get(1), list.get(2));
+                    dataBase.addAnimal(cat, "pets");
                     continue;
                 case "3":
-                    System.out.println("Выбрал хомяка");
+                    list = dataAnimal("pets");
+                    Hamster hamster = new Hamster(list.get(0), list.get(1), list.get(2));
+                    dataBase.addAnimal(hamster, "pets");
                     continue;
                 case "4":
-                    System.out.println("Выбрал лошадь");
+                    list = dataAnimal("packAnimals");
+                    Horse horse = new Horse(list.get(0), list.get(1), list.get(2));
+                    dataBase.addAnimal(horse, "packAnimals");
                     continue;
                 case "5":
-                    System.out.println("Выбрал верблюда");
+                    list = dataAnimal("packAnimals");
+                    Camel camel = new Camel(list.get(0), list.get(1), list.get(2));
+                    dataBase.addAnimal(camel, "packAnimals");
                     continue;
                 case "6":
-                    System.out.println("Выбрал осла");
+                    list = dataAnimal("packAnimals");
+                    Donkey donkey = new Donkey(list.get(0), list.get(1), list.get(2));
+                    dataBase.addAnimal(donkey, "packAnimals");
                     continue;
                 case "0":
                     System.out.println("Вернуться в предыдущее меню");
@@ -135,7 +144,7 @@ public class Menu {
         }
     }
 
-    private ArrayList<String> dataAnimal(){
+    private ArrayList<String> dataAnimal(String flag){
         ArrayList<String> list = new ArrayList<>();
         System.out.println("Имя животного");
         String name = scanner.next();
@@ -143,7 +152,13 @@ public class Menu {
         System.out.println("Дата рождения животного");
         String birthday = scanner.next();
         list.add(birthday);
-        String commands = pets.addCommands();
+        String commands = "";
+        if (flag.equals("pets")){
+            commands = pets.addCommands();
+        }
+        else if (flag.equals("packAnimals")){
+            commands = packAnimals.addCommands();
+        }
         list.add(commands);
         return list;
     }
