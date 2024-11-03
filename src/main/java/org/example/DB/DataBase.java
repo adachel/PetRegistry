@@ -2,7 +2,7 @@ package org.example.DB;
 
 import org.example.Models.Animal;
 
-
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -92,9 +92,24 @@ public class DataBase implements IFunction {
         resultBD.addAll(packAnimalsDB);
         for (int i = 0; i < resultBD.size() - 1; i++) {
             for (int j = 0; j < resultBD.size() - 1; j++) {
-                int dif = resultBD.get(j + 1).get("birthday").compareTo(resultBD.get(j).get("birthday"));
-                if (dif > 0){
-                    Collections.swap(resultBD, j, j + 1);
+                try {
+                    String q1 = resultBD.get(j).get("birthday");
+                    String q2 = resultBD.get(j + 1).get("birthday");
+
+                    SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
+                    SimpleDateFormat format2 = new SimpleDateFormat("dd-MM-yyyy");
+
+                    Date date1 = format1.parse(q1);
+                    Date date2 = format2.parse(q2);
+
+                    int dif = date2.compareTo(date1);
+                    if (dif > 0){
+                        Collections.swap(resultBD, j, j + 1);
+                    }
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                    System.out.println("Не правильный формат даты");
+                    return;
                 }
             }
         }

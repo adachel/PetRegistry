@@ -25,18 +25,18 @@ public class Menu {
                                 "5 - Список домашних животных, " +
                                 "6 - Список вьючных животных, " +
                                 "0 - Выход из программы");
-            String ch = scanner.next();
+            String ch = scanner.nextLine();
             switch (ch){
                 case "1":
                     selectAnimal();
                     continue;
                 case "2":
                     System.out.println("Выберите тип животного: 1 - Домашнее животное, 2 - Вьючное животное");
-                    String select = scanner.next();
+                    String select = scanner.nextLine();
                     System.out.println("Введите Id животного");
-                    String id = scanner.next();
+                    String id = scanner.nextLine();
                     System.out.println("Выберите действие: 1 - Просмотр команд животного, 2 - Добавить новую команду");
-                    String command = scanner.next();
+                    String command = scanner.nextLine();
                     switch (select){
                         case "1":
                             switch (command){
@@ -45,7 +45,7 @@ public class Menu {
                                     continue;
                                 case "2":
                                     System.out.println("Выберите новые команды");
-                                    String newCommands = scanner.next();
+                                    String newCommands = scanner.nextLine();
                                     dataBase.addCommand(id, newCommands, "pets");
                                     continue;
                                 default:
@@ -59,7 +59,7 @@ public class Menu {
                                     continue;
                                 case "2":
                                     System.out.println("Добавить новую команду");
-                                    String newCommands = scanner.next();
+                                    String newCommands = scanner.nextLine();
                                     dataBase.addCommand(id, newCommands, "packAnimals");
                                     continue;
                                 default:
@@ -101,7 +101,7 @@ public class Menu {
                     "5 - Верблюд, " +
                     "6 - Осел, " +
                     "0 - Вернуться в предыдущее меню");
-            String ch = scanner.next();
+            String ch = scanner.nextLine();
             switch (ch){
                 case "1":
                     list = dataAnimal("pets");
@@ -145,10 +145,15 @@ public class Menu {
     private ArrayList<String> dataAnimal(String flag){
         ArrayList<String> list = new ArrayList<>();
         System.out.println("Имя животного");
-        String name = scanner.next();
+        String name = scanner.nextLine();
         list.add(name);
-        System.out.println("Дата рождения животного");
-        String birthday = scanner.next();
+
+
+
+        System.out.println("Дата рождения животного в формате 'dd-mm-yyyy'");
+        String birthday = scanner.nextLine();
+
+
         list.add(birthday);
         String commands = "";
         if (flag.equals("pets")){

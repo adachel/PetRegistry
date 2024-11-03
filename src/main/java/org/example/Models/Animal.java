@@ -22,7 +22,7 @@ public abstract class Animal {
     }
 
     public String addCommands(){
-        System.out.println("Введите команды, выполняемые животным, 0 - Закончить ввод команд");
+        System.out.println("Введите команды, выполняемые животным");
         String command = scanner.nextLine();
         if (command.isEmpty()){
             commands = " ";
