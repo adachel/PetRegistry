@@ -1,7 +1,6 @@
-package org.example;
+package org.example.DB;
 
 import org.example.Models.Animal;
-import org.example.Models.Pets;
 
 public interface IFunction {
     void addAnimal(Animal animal, String flag);

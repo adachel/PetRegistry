@@ -1,9 +1,7 @@
 package org.example;
 
-
 import org.example.DB.DataBase;
 import org.example.Models.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
