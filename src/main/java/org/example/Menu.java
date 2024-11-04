@@ -30,46 +30,56 @@ public class Menu {
                 case "1":
                     selectAnimal();
                     continue;
+
                 case "2":
                     System.out.println("Выберите тип животного: 1 - Домашнее животное, 2 - Вьючное животное");
                     String select = scanner.nextLine();
                     System.out.println("Введите Id животного");
                     String id = scanner.nextLine();
-                    System.out.println("Выберите действие: 1 - Просмотр команд животного, 2 - Добавить новую команду");
-                    String command = scanner.nextLine();
-                    switch (select){
-                        case "1":
-                            switch (command){
-                                case "1":
-                                    dataBase.listCommands(id, "pets");
-                                    continue;
-                                case "2":
-                                    System.out.println("Выберите новые команды");
-                                    String newCommands = scanner.nextLine();
-                                    dataBase.addCommand(id, newCommands, "pets");
-                                    continue;
-                                default:
-                                    System.out.println("Сделайте корректный выбор");
-                            }
-                            break;
-                        case "2":
-                            switch (command){
-                                case "1":
-                                    dataBase.listCommands(id, "packAnimals");
-                                    continue;
-                                case "2":
-                                    System.out.println("Добавить новую команду");
-                                    String newCommands = scanner.nextLine();
-                                    dataBase.addCommand(id, newCommands, "packAnimals");
-                                    continue;
-                                default:
-                                    System.out.println("Сделайте корректный выбор");
-                            }
-                            break;
-                        default:
-                            System.out.println("Сделайте корректный выбор");
+                    System.out.println("Выберите действие: 1 - Просмотр команд животного, 2 - Добавить новую команду, 0 - Выход в предыдущее меню");
+                    while (true){
+                        String command = scanner.nextLine();
+                        switch (select){
+                            case "1":
+                                switch (command){
+                                    case "1":
+                                        System.out.println("Действующие команды: ");
+                                        dataBase.listCommands(id, "pets");
+                                        continue;
+                                    case "2":
+                                        System.out.println("Выберите новые команды");
+                                        String newCommands = scanner.nextLine();
+                                        dataBase.addCommand(id, newCommands, "pets");
+                                        continue;
+                                    case "0":
+                                        break;
+                                    default:
+                                        System.out.println("Сделайте корректный выбор");
+                                }
+                                break;
+                            case "2":
+                                switch (command){
+                                    case "1":
+                                        System.out.println("Действующие команды: ");
+                                        dataBase.listCommands(id, "packAnimals");
+                                        continue;
+                                    case "2":
+                                        System.out.println("Добавить новую команду");
+                                        String newCommands = scanner.nextLine();
+                                        dataBase.addCommand(id, newCommands, "packAnimals");
+                                        continue;
+                                    case "0":
+                                        break;
+                                    default:
+                                        System.out.println("Сделайте корректный выбор");
+                                }
+                                break;
+                            default:
+                                System.out.println("Сделайте корректный выбор");
+                        }
+                        continue;
                     }
-                    continue;
+
                 case "3":
                     System.out.println(pets.getCount() + packAnimals.getCount());
                     continue;
@@ -105,31 +115,49 @@ public class Menu {
             switch (ch){
                 case "1":
                     list = dataAnimal("pets");
+                    if (list.size() != 3){
+                        return;
+                    }
                     Dog dog = new Dog(list.get(0), list.get(1), list.get(2));
                     dataBase.addAnimal(dog, "pets");
                     continue;
                 case "2":
                     list = dataAnimal("pets");
+                    if (list.size() != 3){
+                        return;
+                    }
                     Cat cat = new Cat(list.get(0), list.get(1), list.get(2));
                     dataBase.addAnimal(cat, "pets");
                     continue;
                 case "3":
                     list = dataAnimal("pets");
+                    if (list.size() != 3){
+                        return;
+                    }
                     Hamster hamster = new Hamster(list.get(0), list.get(1), list.get(2));
                     dataBase.addAnimal(hamster, "pets");
                     continue;
                 case "4":
                     list = dataAnimal("packAnimals");
+                    if (list.size() != 3){
+                        return;
+                    }
                     Horse horse = new Horse(list.get(0), list.get(1), list.get(2));
                     dataBase.addAnimal(horse, "packAnimals");
                     continue;
                 case "5":
                     list = dataAnimal("packAnimals");
+                    if (list.size() != 3){
+                        return;
+                    }
                     Camel camel = new Camel(list.get(0), list.get(1), list.get(2));
                     dataBase.addAnimal(camel, "packAnimals");
                     continue;
                 case "6":
                     list = dataAnimal("packAnimals");
+                    if (list.size() != 3){
+                        return;
+                    }
                     Donkey donkey = new Donkey(list.get(0), list.get(1), list.get(2));
                     dataBase.addAnimal(donkey, "packAnimals");
                     continue;
@@ -142,27 +170,45 @@ public class Menu {
         }
     }
 
-    private ArrayList<String> dataAnimal(String flag){
+    private ArrayList<String> dataAnimal(String flag) {
         ArrayList<String> list = new ArrayList<>();
-        System.out.println("Имя животного");
-        String name = scanner.nextLine();
-        list.add(name);
+        while (true) {
+            System.out.println("Имя животного");
+            String name = scanner.nextLine();
+            list.add(name);
+            System.out.println("Дата рождения животного в формате 'dd-mm-yyyy'");
+            String birthday = scanner.nextLine();
 
+            try {
+                String[] arrTemp = birthday.split("-");
+                int temp1 = Integer.parseInt(arrTemp[0]);
+                int temp2 = Integer.parseInt(arrTemp[1]);
+                int temp3 = Integer.parseInt(arrTemp[2]);
 
+                if (birthday.charAt(2) == '-' && birthday.charAt(5) == '-') {
+                    if (temp1 > 0 && temp1 < 31 && temp2 > 0 && temp2 < 13 && temp3 > 999 && temp3 < 10000){
+                        list.add(birthday);
+                    }
+                }
 
-        System.out.println("Дата рождения животного в формате 'dd-mm-yyyy'");
-        String birthday = scanner.nextLine();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("Не правильный формат даты");
+                break;
+            }
 
-
-        list.add(birthday);
-        String commands = "";
-        if (flag.equals("pets")){
-            commands = pets.addCommands();
+            String commands = "";
+            if (flag.equals("pets")) {
+                commands = pets.addCommands();
+                list.add(commands);
+                return list;
+            } else if (flag.equals("packAnimals")) {
+                commands = packAnimals.addCommands();
+                list.add(commands);
+                return list;
+            }
         }
-        else if (flag.equals("packAnimals")){
-            commands = packAnimals.addCommands();
-        }
-        list.add(commands);
         return list;
     }
 }
+

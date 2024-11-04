@@ -48,18 +48,25 @@ public class DataBase implements IFunction {
     @Override
     public void listCommands(String id, String flag) {
         if (flag.equals("pets")){
-            for (HashMap<String, String> list: petsDB){
-                if (id.equals(list.get("Id"))){
-                    System.out.println(list.get("commands"));
+            if (petsDB.size() > 0){
+                for (HashMap<String, String> list: petsDB){
+                    if (id.equals(list.get("Id"))){
+                        System.out.println(list.get("commands"));
+                    }
                 }
             }
+            else System.out.println("Команды не заданы");
+
         }
-        else if (flag.equals("packAnimals")){
-            for (HashMap<String, String> list: packAnimalsDB){
-                if (id.equals(list.get("Id"))){
-                    System.out.println(list.get("commands"));
+        else if (flag.equals("packAnimalsDB")){
+            if (packAnimalsDB.size() > 0){
+                for (HashMap<String, String> list: packAnimalsDB){
+                    if (id.equals(list.get("Id"))){
+                        System.out.println(list.get("commands"));
+                    }
                 }
             }
+            else System.out.println("Команды не заданы");
         }
     }
 
