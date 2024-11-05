@@ -1,7 +1,6 @@
 package org.example.DB;
 
 import org.example.Models.Animal;
-
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -48,7 +47,10 @@ public class DataBase implements IFunction {
     @Override
     public void listCommands(String id, String flag) {
         if (flag.equals("pets")){
-            if (petsDB.size() > 0){
+
+            int a = petsDB.size();
+
+            if (!petsDB.isEmpty()){
                 for (HashMap<String, String> list: petsDB){
                     if (id.equals(list.get("Id"))){
                         System.out.println(list.get("commands"));
@@ -59,7 +61,7 @@ public class DataBase implements IFunction {
 
         }
         else if (flag.equals("packAnimalsDB")){
-            if (packAnimalsDB.size() > 0){
+            if (!packAnimalsDB.isEmpty()){
                 for (HashMap<String, String> list: packAnimalsDB){
                     if (id.equals(list.get("Id"))){
                         System.out.println(list.get("commands"));
