@@ -22,76 +22,97 @@ public class DataBase implements IFunction {
 
     @Override
     public void addAnimal(Animal animal, String flag) {
-        if (flag.equals("pets")){
-            petsDB.add(strToMap(animal));
+        try {
+            if (flag.equals("pets")){
+                petsDB.add(strToMap(animal));
+            }
+            if (flag.equals("packAnimals")){
+                packAnimalsDB.add(strToMap(animal));
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Ошибка");
         }
-        else if (flag.equals("packAnimals")){
-            packAnimalsDB.add(strToMap(animal));
-        }
+
     }
 
     @Override
     public void printDB(String flag) {
-        if (flag.equals("pets")){
-            for (HashMap<String, String> list: petsDB){
-                System.out.println(list);
+        try {
+            if (flag.equals("pets")){
+                for (HashMap<String, String> list: petsDB){
+                    System.out.println(list);
+                }
             }
-        }
-        else if (flag.equals("packAnimals")){
-            for (HashMap<String, String> list: packAnimalsDB){
-                System.out.println(list);
+            if (flag.equals("packAnimals")){
+                for (HashMap<String, String> list: packAnimalsDB){
+                    System.out.println(list);
+                }
             }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Ошибка");
         }
+
     }
 
     @Override
     public void listCommands(String id, String flag) {
-        if (flag.equals("pets")){
-
-            int a = petsDB.size();
-
-            if (!petsDB.isEmpty()){
-                for (HashMap<String, String> list: petsDB){
-                    if (id.equals(list.get("Id"))){
-                        System.out.println(list.get("commands"));
+        try {
+            if (flag.equals("pets")){
+                if (!petsDB.isEmpty()){
+                    for (HashMap<String, String> list: petsDB){
+                        if (id.equals(list.get("Id"))){
+                            System.out.println(list.get("commands"));
+                        }
                     }
                 }
+                else System.out.println("Команды не заданы");
             }
-            else System.out.println("Команды не заданы");
-
-        }
-        else if (flag.equals("packAnimalsDB")){
-            if (!packAnimalsDB.isEmpty()){
-                for (HashMap<String, String> list: packAnimalsDB){
-                    if (id.equals(list.get("Id"))){
-                        System.out.println(list.get("commands"));
+            if (flag.equals("packAnimals")){
+                if (!packAnimalsDB.isEmpty()){
+                    for (HashMap<String, String> list: packAnimalsDB){
+                        if (id.equals(list.get("Id"))){
+                            System.out.println(list.get("commands"));
+                        }
                     }
                 }
+                else System.out.println("Команды не заданы");
             }
-            else System.out.println("Команды не заданы");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Ошибка");
+
         }
+
     }
 
     @Override
     public void addCommand(String id, String newCommand, String flag) {
-        if (flag.equals("pets")){
-            for (HashMap<String, String> list: petsDB){
-                if (id.equals(list.get("Id"))){
-                    String command = list.get("commands");
-                    String commands = command + "," + newCommand;
-                    list.put("commands", commands);
+        try {
+            if (flag.equals("pets")){
+                for (HashMap<String, String> list: petsDB){
+                    if (id.equals(list.get("Id"))){
+                        String command = list.get("commands");
+                        String commands = command + "," + newCommand;
+                        list.put("commands", commands);
+                    }
                 }
             }
-        }
-        else if (flag.equals("packAnimals")){
-            for (HashMap<String, String> list: packAnimalsDB){
-                if (id.equals(list.get("Id"))){
-                    String command = list.get("commands");
-                    String commands = command + "," + newCommand;
-                    list.put("commands", commands);
+            if (flag.equals("packAnimals")){
+                for (HashMap<String, String> list: packAnimalsDB){
+                    if (id.equals(list.get("Id"))){
+                        String command = list.get("commands");
+                        String commands = command + "," + newCommand;
+                        list.put("commands", commands);
+                    }
                 }
             }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Ошибка");
         }
+
     }
 
     @Override

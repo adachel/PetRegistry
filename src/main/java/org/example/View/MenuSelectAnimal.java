@@ -1,13 +1,12 @@
-package org.example;
+package org.example.View;
 
 import org.example.DB.DataBase;
 import org.example.Models.*;
+import org.example.View.Menu;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MenuSelectAnimal extends Menu {
 
@@ -107,23 +106,6 @@ public class MenuSelectAnimal extends Menu {
                 LocalDate date = LocalDate.parse(birthday, formatter);
                 String strData = formatter.format(date);
                 list.add(strData);
-
-
-
-//                String[] arrTemp = birthday.split("-");
-//                int temp1 = Integer.parseInt(arrTemp[0]);
-//                int temp2 = Integer.parseInt(arrTemp[1]);
-//                int temp3 = Integer.parseInt(arrTemp[2]);
-//
-//                if (birthday.charAt(2) == '-' && birthday.charAt(5) == '-') {
-//                    if (temp1 > 0 && temp1 < 31 && temp2 > 0 && temp2 < 13 && temp3 > 999 && temp3 < 10000){
-//                        list.add(birthday);
-//                    }
-//                    else {
-//                        System.out.println("Не правильный формат даты");
-//                        break;
-//                    }
-//                }
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
