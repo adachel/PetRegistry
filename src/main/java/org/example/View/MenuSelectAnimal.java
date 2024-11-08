@@ -1,17 +1,15 @@
 package org.example.View;
 
-import org.example.DB.DataBase;
+import org.example.Controller.Controller;
 import org.example.Models.*;
-import org.example.View.Menu;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class MenuSelectAnimal extends Menu {
 
-    public MenuSelectAnimal(DataBase dataBase) {
-        super(dataBase);
+    public MenuSelectAnimal(Controller controller) {
+        super(controller);
     }
 
     public void selectAnimal(){
@@ -30,56 +28,38 @@ public class MenuSelectAnimal extends Menu {
             switch (ch){
                 case "1":
                     list = dataAnimal("pets");
-                    if (list.size() != 3){
-                        return;
-                    }
-                    Dog dog = new Dog(list.get(0), list.get(1), list.get(2));
-                    super.dataBase.addAnimal(dog, "pets");
+                    Dog dog = new Dog((String)list.get(0), (LocalDate)list.get(1), (String)list.get(2));
+                    controller.addAnimal(dog, "pets");
                     continue;
 
                 case "2":
                     list = dataAnimal("pets");
-                    if (list.size() != 3){
-                        return;
-                    }
-                    Cat cat = new Cat(list.get(0), list.get(1), list.get(2));
-                    super.dataBase.addAnimal(cat, "pets");
+                    Cat cat = new Cat((String) list.get(0), (LocalDate) list.get(1), (String) list.get(2));
+                    controller.addAnimal(cat, "pets");
                     continue;
 
                 case "3":
                     list = dataAnimal("pets");
-                    if (list.size() != 3){
-                        return;
-                    }
-                    Hamster hamster = new Hamster(list.get(0), list.get(1), list.get(2));
-                    super.dataBase.addAnimal(hamster, "pets");
+                    Hamster hamster = new Hamster((String) list.get(0), (LocalDate) list.get(1), (String) list.get(2));
+                    controller.addAnimal(hamster, "pets");
                     continue;
 
                 case "4":
                     list = dataAnimal("packAnimals");
-                    if (list.size() != 3){
-                        return;
-                    }
-                    Horse horse = new Horse(list.get(0), list.get(1), list.get(2));
-                    super.dataBase.addAnimal(horse, "packAnimals");
+                    Horse horse = new Horse((String) list.get(0), (LocalDate) list.get(1), (String) list.get(2));
+                    controller.addAnimal(horse, "packAnimals");
                     continue;
 
                 case "5":
                     list = dataAnimal("packAnimals");
-                    if (list.size() != 3){
-                        return;
-                    }
-                    Camel camel = new Camel(list.get(0), list.get(1), list.get(2));
-                    super.dataBase.addAnimal(camel, "packAnimals");
+                    Camel camel = new Camel((String) list.get(0), (LocalDate) list.get(1), (String) list.get(2));
+                    controller.addAnimal(camel, "packAnimals");
                     continue;
 
                 case "6":
                     list = dataAnimal("packAnimals");
-                    if (list.size() != 3){
-                        return;
-                    }
-                    Donkey donkey = new Donkey(list.get(0), list.get(1), list.get(2));
-                    super.dataBase.addAnimal(donkey, "packAnimals");
+                    Donkey donkey = new Donkey((String) list.get(0), (LocalDate) list.get(1), (String) list.get(2));
+                    controller.addAnimal(donkey, "packAnimals");
                     continue;
 
                 case "0":
@@ -92,8 +72,8 @@ public class MenuSelectAnimal extends Menu {
         }
     }
 
-    private ArrayList<String> dataAnimal(String flag) {
-        ArrayList<String> list = new ArrayList<>();
+    private ArrayList<Object> dataAnimal(String flag) {
+        ArrayList<Object> list = new ArrayList<>();
         while (true) {
             System.out.println("Имя животного");
             String name = scanner.nextLine();
@@ -104,8 +84,7 @@ public class MenuSelectAnimal extends Menu {
             try {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 LocalDate date = LocalDate.parse(birthday, formatter);
-                String strData = formatter.format(date);
-                list.add(strData);
+                list.add(date);
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -113,7 +92,7 @@ public class MenuSelectAnimal extends Menu {
                 break;
             }
 
-            String commands = "";
+            String commands;
             if (flag.equals("pets")) {
                 commands = pets.addCommands();
                 list.add(commands);

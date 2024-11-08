@@ -1,4 +1,4 @@
-package org.example.DB;
+package org.example.Controller;
 
 import org.example.Models.Animal;
 

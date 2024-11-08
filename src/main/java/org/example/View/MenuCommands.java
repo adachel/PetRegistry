@@ -1,14 +1,13 @@
 package org.example.View;
 
-import org.example.DB.DataBase;
-
+import org.example.Controller.Controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class MenuCommands extends Menu{
-    public MenuCommands(DataBase dataBase) {
-        super(dataBase);
+
+    public MenuCommands(Controller controller) {
+        super(controller);
     }
     public void selectCommands(){
         while (true){
@@ -45,15 +44,15 @@ public class MenuCommands extends Menu{
             String command = scanner.nextLine();
             switch (command){
                 case "1":
-                    System.out.println("Действующие команды: ");
                     id = inputID(flag);
-                    super.dataBase.listCommands(id, flag);
+                    System.out.println("Действующие команды: ");
+                    super.controller.listCommands(id, flag);
                     continue;
                 case "2":
                     id = inputID(flag);
                     System.out.println("Введите новые команды");
                     String newCommands = scanner.nextLine();
-                    super.dataBase.addCommand(id, newCommands, flag);
+                    super.controller.addCommand(id, newCommands, flag);
                     continue;
                 case "0":
                     break;
@@ -67,20 +66,20 @@ public class MenuCommands extends Menu{
     }
 
     private String inputID(String flag){
-        ArrayList<HashMap<String, String>> arr;
+        ArrayList<HashMap<String, Object>> arr;
         StringBuilder arrId = new StringBuilder();
         String result = "";
         System.out.println("Введите Id животного из списка: ");
         if (flag.equals("pets")){
-            arr = super.dataBase.getPetsDB();
-            for (HashMap<String, String> elem: arr){
+            arr = super.controller.getDataBase().getPetsDB();
+            for (HashMap<String, Object> elem: arr){
                 arrId.append(elem.get("Id")).append(",");
                 System.out.println("  " + elem.get("Id") + " " + elem.get("name"));
             }
         }
         if (flag.equals("packAnimals")){
-            arr = super.dataBase.getPackAnimalsDB();
-            for (HashMap<String, String> elem: arr){
+            arr = super.controller.getDataBase().getPackAnimalsDB();
+            for (HashMap<String, Object> elem: arr){
                 arrId.append(elem.get("Id")).append(",");
                 System.out.println("  " + elem.get("Id") + " " + elem.get("name"));
             }

@@ -1,21 +1,22 @@
 package org.example.Models;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public abstract class Animal {
     private String name;
-    private String birthday;
+    private LocalDate birthday;
     private String commands;
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public Animal() {}
 
-    public Animal(String name, String birthday) {
+    public Animal(String name, LocalDate birthday) {
         this.name = name;
         this.birthday = birthday;
     }
 
-    public Animal(String name, String birthday, String commands) {
+    public Animal(String name, LocalDate birthday, String commands) {
         this.name = name;
         this.birthday = birthday;
         this.commands = commands;

@@ -2,8 +2,8 @@ package org.example.View;
 
 public class GeneralMenu extends Menu {
 
-    private final MenuSelectAnimal menuSelectAnimal = new MenuSelectAnimal(super.dataBase);
-    private final MenuCommands menuCommands = new MenuCommands(super.dataBase);
+    private final MenuSelectAnimal menuSelectAnimal = new MenuSelectAnimal(super.controller);
+    private final MenuCommands menuCommands = new MenuCommands(super.controller);
 
     public GeneralMenu() {
     }
@@ -35,15 +35,15 @@ public class GeneralMenu extends Menu {
                     continue;
 
                 case "4":
-                    super.dataBase.listAnimalByDateOfBirth();
+                    super.controller.listAnimalByDateOfBirth();
                     continue;
 
                 case "5":
-                    super.dataBase.printDB("pets");
+                    super.controller.printDB("pets");
                     continue;
 
                 case "6":
-                    super.dataBase.printDB("packAnimals");
+                    super.controller.printDB("packAnimals");
                     continue;
 
                 case "0":

@@ -1,22 +1,22 @@
 package org.example.View;
 
-import org.example.DB.DataBase;
+import org.example.Controller.Controller;
 import org.example.Models.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
     protected Scanner scanner = new Scanner(System.in);
-    protected DataBase dataBase = new DataBase();
+    protected Controller controller = new Controller();
     protected Pets pets = new Pets();
     protected PackAnimals packAnimals = new PackAnimals();
-    protected ArrayList<String> list = new ArrayList<>();
+    protected ArrayList<Object> list = new ArrayList<>();
 
     public Menu() {
     }
 
-    public Menu(DataBase dataBase) {
-        this.dataBase = dataBase;
+    public Menu(Controller controller) {
+        this.controller = controller;
     }
 }
 
