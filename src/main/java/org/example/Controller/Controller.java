@@ -121,7 +121,9 @@ public class Controller implements IFunction {
         LocalDate date = LocalDate.parse(arr[3], formatter);
         elem.put("birthday", date);
 
-        elem.put("commands", arr[4]);
+
+        ArrayList<String> commands = new ArrayList<>();
+        elem.put("commands", commands);
         return elem;
     }
 }

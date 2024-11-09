@@ -1,6 +1,7 @@
 package org.example.Models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Dog extends Pets {
 
@@ -13,7 +14,7 @@ public class Dog extends Pets {
         id = super.getCount();
     }
 
-    public Dog(String name, LocalDate birthday, String commands) {
+    public Dog(String name, LocalDate birthday, ArrayList<String> commands) {
         super(name, birthday, commands);
         id = super.getCount();
     }

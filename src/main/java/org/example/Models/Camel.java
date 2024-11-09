@@ -1,6 +1,7 @@
 package org.example.Models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Camel extends PackAnimals{
 
@@ -13,7 +14,7 @@ public class Camel extends PackAnimals{
         id = super.getCount();
     }
 
-    public Camel(String name, LocalDate birthday, String commands) {
+    public Camel(String name, LocalDate birthday, ArrayList<String> commands) {
         super(name, birthday, commands);
         id = super.getCount();
     }

@@ -28,37 +28,38 @@ public class MenuSelectAnimal extends Menu {
             switch (ch){
                 case "1":
                     list = dataAnimal("pets");
-                    Dog dog = new Dog((String)list.get(0), (LocalDate)list.get(1), (String)list.get(2));
+
+                    Dog dog = new Dog((String)list.get(0), (LocalDate)list.get(1), (ArrayList<String>) list.get(2));
                     controller.addAnimal(dog, "pets");
                     continue;
 
                 case "2":
                     list = dataAnimal("pets");
-                    Cat cat = new Cat((String) list.get(0), (LocalDate) list.get(1), (String) list.get(2));
+                    Cat cat = new Cat((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
                     controller.addAnimal(cat, "pets");
                     continue;
 
                 case "3":
                     list = dataAnimal("pets");
-                    Hamster hamster = new Hamster((String) list.get(0), (LocalDate) list.get(1), (String) list.get(2));
+                    Hamster hamster = new Hamster((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
                     controller.addAnimal(hamster, "pets");
                     continue;
 
                 case "4":
                     list = dataAnimal("packAnimals");
-                    Horse horse = new Horse((String) list.get(0), (LocalDate) list.get(1), (String) list.get(2));
+                    Horse horse = new Horse((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
                     controller.addAnimal(horse, "packAnimals");
                     continue;
 
                 case "5":
                     list = dataAnimal("packAnimals");
-                    Camel camel = new Camel((String) list.get(0), (LocalDate) list.get(1), (String) list.get(2));
+                    Camel camel = new Camel((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
                     controller.addAnimal(camel, "packAnimals");
                     continue;
 
                 case "6":
                     list = dataAnimal("packAnimals");
-                    Donkey donkey = new Donkey((String) list.get(0), (LocalDate) list.get(1), (String) list.get(2));
+                    Donkey donkey = new Donkey((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
                     controller.addAnimal(donkey, "packAnimals");
                     continue;
 
@@ -92,7 +93,7 @@ public class MenuSelectAnimal extends Menu {
                 break;
             }
 
-            String commands;
+            ArrayList<String> commands;
             if (flag.equals("pets")) {
                 commands = pets.addCommands();
                 list.add(commands);
