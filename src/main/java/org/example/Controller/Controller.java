@@ -70,18 +70,18 @@ public class Controller implements IFunction {
         if (flag.equals("pets")){
             for (HashMap<String, Object> list: dataBase.getPetsDB()){
                 if (id.equals(list.get("Id"))){
-                    String command = (String) list.get("commands");
-                    String commands = command + "," + newCommand;
-                    list.put("commands", commands);
+                    List<String> command = (List<String>) list.get("commands");
+                    command.add(newCommand);
+                    list.put("commands", command);
                 }
             }
         }
         if (flag.equals("packAnimals")){
             for (HashMap<String, Object> list: dataBase.getPackAnimalsDB()){
                 if (id.equals(list.get("Id"))){
-                    String command = (String) list.get("commands");
-                    String commands = command + "," + newCommand;
-                    list.put("commands", commands);
+                    List<String> command = (List<String>) list.get("commands");
+                    command.add(newCommand);
+                    list.put("commands", command);
                 }
             }
         }
@@ -110,9 +110,9 @@ public class Controller implements IFunction {
 
 
     private LinkedHashMap<String, Object> strToMap(Animal animal){
+        LinkedHashMap<String, Object> elem = new LinkedHashMap<>();
         String str = String.format(String.valueOf(animal));
         String[] arr = str.split(";");
-        LinkedHashMap<String, Object> elem = new LinkedHashMap<>();
         elem.put("Id", arr[0]);
         elem.put("Type", arr[1]);
         elem.put("name", arr[2]);
@@ -121,8 +121,9 @@ public class Controller implements IFunction {
         LocalDate date = LocalDate.parse(arr[3], formatter);
         elem.put("birthday", date);
 
-
-        ArrayList<String> commands = new ArrayList<>();
+        String temp = arr[4].replace("[", "").replace("]", "");
+        String[] arrTemp = temp.split(",");
+        ArrayList<String> commands = new ArrayList<>(Arrays.asList(arrTemp));
         elem.put("commands", commands);
         return elem;
     }

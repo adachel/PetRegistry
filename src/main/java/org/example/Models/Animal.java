@@ -31,8 +31,11 @@ public abstract class Animal {
             if (command.equals("0")){
                 break;
             }
+            if (command.isEmpty()){
+                System.out.println("Введите команду или '0'");
+                continue;
+            }
             listCommands.add(command);
-            continue;
         }
         return listCommands;
     }

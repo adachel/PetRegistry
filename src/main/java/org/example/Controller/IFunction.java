@@ -1,7 +1,6 @@
 package org.example.Controller;
 
 import org.example.Models.Animal;
-
 public interface IFunction {
     void addAnimal(Animal animal, String flag);
     void printDB(String flag);

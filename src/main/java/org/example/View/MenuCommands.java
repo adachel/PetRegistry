@@ -45,11 +45,19 @@ public class MenuCommands extends Menu{
             switch (command){
                 case "1":
                     id = inputID(flag);
+                    if (id.isEmpty()){
+                        System.out.println("Введите корректный Id");
+                        continue;
+                    }
                     System.out.println("Действующие команды: ");
                     super.controller.listCommands(id, flag);
                     continue;
                 case "2":
                     id = inputID(flag);
+                    if (id.isEmpty()){
+                        System.out.println("Введите корректный Id");
+                        continue;
+                    }
                     System.out.println("Введите новые команды");
                     String newCommands = scanner.nextLine();
                     super.controller.addCommand(id, newCommands, flag);
