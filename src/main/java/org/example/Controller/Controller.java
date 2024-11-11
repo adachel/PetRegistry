@@ -109,6 +109,7 @@ public class Controller implements IFunction {
     }
 
 
+
     private LinkedHashMap<String, Object> strToMap(Animal animal){
         LinkedHashMap<String, Object> elem = new LinkedHashMap<>();
         String str = String.format(String.valueOf(animal));

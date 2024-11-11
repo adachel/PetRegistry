@@ -28,39 +28,62 @@ public class MenuSelectAnimal extends Menu {
             switch (ch){
                 case "1":
                     list = dataAnimal("pets");
-
-                    Dog dog = new Dog((String)list.get(0), (LocalDate)list.get(1), (ArrayList<String>) list.get(2));
-                    controller.addAnimal(dog, "pets");
+                    try {
+                        Dog dog = new Dog((String)list.get(0), (LocalDate)list.get(1), (ArrayList<String>) list.get(2));
+                        controller.addAnimal(dog, "pets");
+                    }catch (Exception e){
+                        System.out.println("Введите корректные данные");
+                    }
                     continue;
 
                 case "2":
                     list = dataAnimal("pets");
-                    Cat cat = new Cat((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
-                    controller.addAnimal(cat, "pets");
+                    try {
+                        Cat cat = new Cat((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
+                        controller.addAnimal(cat, "pets");
+                    }catch (Exception e){
+                        System.out.println("Введите корректные данные");
+                    }
                     continue;
 
                 case "3":
                     list = dataAnimal("pets");
-                    Hamster hamster = new Hamster((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
-                    controller.addAnimal(hamster, "pets");
+                    try {
+                        Hamster hamster = new Hamster((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
+                        controller.addAnimal(hamster, "pets");
+                    }catch (Exception e){
+                        System.out.println("Введите корректные данные");
+                    }
                     continue;
 
                 case "4":
                     list = dataAnimal("packAnimals");
-                    Horse horse = new Horse((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
-                    controller.addAnimal(horse, "packAnimals");
+                    try {
+                        Horse horse = new Horse((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
+                        controller.addAnimal(horse, "packAnimals");
+                    }catch (Exception e){
+                        System.out.println("Введите корректные данные");
+                    }
                     continue;
 
                 case "5":
                     list = dataAnimal("packAnimals");
-                    Camel camel = new Camel((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
-                    controller.addAnimal(camel, "packAnimals");
+                    try {
+                        Camel camel = new Camel((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
+                        controller.addAnimal(camel, "packAnimals");
+                    }catch (Exception e){
+                        System.out.println("Введите корректные данные");
+                    }
                     continue;
 
                 case "6":
                     list = dataAnimal("packAnimals");
-                    Donkey donkey = new Donkey((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
-                    controller.addAnimal(donkey, "packAnimals");
+                    try {
+                        Donkey donkey = new Donkey((String) list.get(0), (LocalDate) list.get(1), (ArrayList<String>) list.get(2));
+                        controller.addAnimal(donkey, "packAnimals");
+                    }catch (Exception e){
+                        System.out.println("Введите корректные данные");
+                    }
                     continue;
 
                 case "0":
